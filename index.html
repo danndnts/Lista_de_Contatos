@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Contatos</title>
+    <link href="styles.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="app">
+        <div class="content-form">
+            <form id="app-form">
+                <div class="input-group">
+                    <input id="pessoaNome" placeholder="Digite o primeiro nome do contato*" required />
+                    <input id="pessoaSobrenome" placeholder="Digite o sobrenome do contato*" required />
+                </div>
+                <div class="input-group">
+                    <input type="number" id="pessoaTelefone" placeholder="Digite o telefone* (com DDD)" required />
+                    <input type="email" id="pessoaEmail" placeholder="Digite seu email" required />
+                </div>
+                <div class="input-group">
+                    <input id="pessoaRua" placeholder="Digite o nome da rua" required />
+                    <input type="number" id="numeroRua" placeholder="nº" required />
+                </div>
+                <div class="input-group">
+                    <input id="pessoaCep" placeholder="CEP" required />
+                    <input id="pessoaCidade" placeholder="Cidade" required />
+                    <select id="pessoaEstado" name="estado" required>
+                        <option value="">Selecione seu estado</option>
+                        <option value="AC">Acre</option>
+                        <option value="AL">Alagoas</option>
+                        <option value="AP">Amapá</option>
+                        <option value="AM">Amazonas</option>
+                        <option value="BA">Bahia</option>
+                        <option value="CE">Ceará</option>
+                        <option value="DF">Distrito Federal</option>
+                        <option value="ES">Espírito Santo</option>
+                        <option value="GO">Goiás</option>
+                        <option value="MA">Maranhão</option>
+                        <option value="MT">Mato Grosso</option>
+                        <option value="MS">Mato Grosso do Sul</option>
+                        <option value="MG">Minas Gerais</option>
+                        <option value="PA">Pará</option>
+                        <option value="PB">Paraíba</option>
+                        <option value="PR">Paraná</option>
+                        <option value="PE">Pernambuco</option>
+                        <option value="PI">Piauí</option>
+                        <option value="RJ">Rio de Janeiro</option>
+                        <option value="RN">Rio Grande do Norte</option>
+                        <option value="RS">Rio Grande do Sul</option>
+                        <option value="RO">Rondônia</option>
+                        <option value="RR">Roraima</option>
+                        <option value="SC">Santa Catarina</option>
+                        <option value="SP">São Paulo</option>
+                        <option value="SE">Sergipe</option>
+                        <option value="TO">Tocantins</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button class="btn-app" id="btnCadastrar" type="submit">Cadastrar</button>
+                    <button class="btn-app" id="btnEditar" type="button" style="display: none;">Editar</button>
+                </div>
+                <div class="content-actions">
+                    <div class="content-actions-buttons">
+                        <button class="btn-app" id="btnOrdenar">Ordenar</button>
+                        <input type="text" id="searchInput" placeholder="Buscar por nome ou telefone">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="content-list">
+            <div class="content-list-container">
+                <ul id="listaPessoas"></ul>
+            </div>
+        </div>
+    </div>
+    <script src="site.js"></script>
+</body>
+</html>
