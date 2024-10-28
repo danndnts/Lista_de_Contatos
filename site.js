@@ -1,11 +1,11 @@
 // Referências aos elementos HTML
-var appForm = document.getElementById('app-form');
-var listaPessoas = document.getElementById('listaPessoas');
-var btnOrdenar = document.getElementById('btnOrdenar');
-var btnExemplo = document.getElementById('btnExemplo');
+let appForm = document.getElementById('app-form');
+let listaPessoas = document.getElementById('listaPessoas');
+let btnOrdenar = document.getElementById('btnOrdenar');
+let btnExemplo = document.getElementById('btnExemplo');
 
 // Lista de pessoas
-var pessoas = [];
+let pessoas = [];
 
 // Inicializa a aplicação carregando os dados do LocalStorage
 function inicializarApp() {
@@ -21,18 +21,18 @@ function salvarNoLocalStorage() {
 // Adiciona uma nova pessoa
 function addPessoa(e) {
     e.preventDefault();
-    var nome = e.target.pessoaNome.value;
-    var sobrenome = e.target.pessoaSobrenome.value;
-    var telefone = e.target.pessoaTelefone.value;
-    var rua = e.target.pessoaRua.value;
-    var nrua = e.target.numeroRua.value;
-    var cep = e.target.pessoaCep.value;
-    var cidade = e.target.pessoaCidade.value;
-    var estado = e.target.pessoaEstado.value;
-    var email = e.target.pessoaEmail.value;
-    var pessoa = { nome, sobrenome, telefone, rua, nrua, cep, cidade, estado, email };
+    let nome = e.target.pessoaNome.value;
+    let sobrenome = e.target.pessoaSobrenome.value;
+    let telefone = e.target.pessoaTelefone.value;
+    let rua = e.target.pessoaRua.value;
+    let nrua = e.target.numeroRua.value;
+    let cep = e.target.pessoaCep.value;
+    let cidade = e.target.pessoaCidade.value;
+    let estado = e.target.pessoaEstado.value;
+    let email = e.target.pessoaEmail.value;
+    let pessoa = { nome, sobrenome, telefone, rua, nrua, cep, cidade, estado, email };
 
-    var validation = validarCampos(pessoa);
+    let validation = validarCampos(pessoa);
     if (!validation.status) {
         alert(validation.error);
         return;
@@ -46,7 +46,7 @@ function addPessoa(e) {
 
 // Função de validação dos campos
 function validarCampos(pessoa) {
-    var validation = { status: true, error: '' };
+    let validation = { status: true, error: '' };
 
     if (pessoa.nome.length === 0) {
         validation.status = false;
@@ -67,16 +67,16 @@ function validarCampos(pessoa) {
 function mostrarLista() {
     listaPessoas.innerHTML = '';
     for (let pessoa of pessoas) {
-        var nomeEl = document.createElement('strong');
+        let nomeEl = document.createElement('strong');
         nomeEl.appendChild(document.createTextNode(pessoa.nome + ' ' + pessoa.sobrenome));
 
-        var telefoneEl = document.createElement('p');
+        let telefoneEl = document.createElement('p');
         telefoneEl.appendChild(document.createTextNode('Telefone: ' + pessoa.telefone));
 
-        var emailEl = document.createElement('p');
+        let emailEl = document.createElement('p');
         emailEl.appendChild(document.createTextNode('E-mail: ' + pessoa.email));
 
-        var enderecoEl = document.createElement('p');
+        let enderecoEl = document.createElement('p');
         enderecoEl.appendChild(document.createTextNode('Rua: ' + pessoa.rua + ', nº: ' + pessoa.nrua));
         enderecoEl.appendChild(document.createElement('br'));
         enderecoEl.appendChild(document.createTextNode('Cidade e estado: ' + pessoa.cidade + ' - ' + pessoa.estado));
@@ -84,19 +84,19 @@ function mostrarLista() {
         enderecoEl.appendChild(document.createTextNode('CEP: ' + pessoa.cep));
 
         listaPessoas.appendChild(enderecoEl);
-        var indice = pessoas.indexOf(pessoa);
+        let indice = pessoas.indexOf(pessoa);
 
-        var removerEl = document.createElement('a');
+        let removerEl = document.createElement('a');
         removerEl.setAttribute('href', '#');
         removerEl.appendChild(document.createTextNode('Remover'));
         removerEl.setAttribute('onclick', 'removerPessoa(' + indice + ')');
 
-        var alterarEl = document.createElement('a');
+        let alterarEl = document.createElement('a');
         alterarEl.setAttribute('href', '#');
         alterarEl.appendChild(document.createTextNode('Alterar'));
         alterarEl.setAttribute('onclick', 'alterarPessoa(' + indice + ')');
 
-        var itemEl = document.createElement('li');
+        let itemEl = document.createElement('li');
         itemEl.appendChild(nomeEl);
         itemEl.appendChild(telefoneEl);
         itemEl.appendChild(emailEl);
@@ -108,7 +108,6 @@ function mostrarLista() {
     }
 }
 
-
 // Remove uma pessoa
 function removerPessoa(indice) {
     pessoas.splice(indice, 1);
@@ -118,17 +117,17 @@ function removerPessoa(indice) {
 
 // Função para editar uma pessoa
 function alterarPessoa(indice) {
-    var btnCadastrar = document.getElementById('btnCadastrar');
-    var btnEditar = document.getElementById('btnEditar');
-    var input_nome = document.getElementById('pessoaNome');
-    var input_sobrenome = document.getElementById('pessoaSobrenome');
-    var input_telefone = document.getElementById('pessoaTelefone');
-    var input_email = document.getElementById('pessoaEmail');
-    var input_rua = document.getElementById('pessoaRua');
-    var input_nrua = document.getElementById('numeroRua');
-    var input_cidade = document.getElementById('pessoaCidade');
-    var input_estado = document.getElementById('pessoaEstado');
-    var input_cep = document.getElementById('pessoaCep');
+    let btnCadastrar = document.getElementById('btnCadastrar');
+    let btnEditar = document.getElementById('btnEditar');
+    let input_nome = document.getElementById('pessoaNome');
+    let input_sobrenome = document.getElementById('pessoaSobrenome');
+    let input_telefone = document.getElementById('pessoaTelefone');
+    let input_email = document.getElementById('pessoaEmail');
+    let input_rua = document.getElementById('pessoaRua');
+    let input_nrua = document.getElementById('numeroRua');
+    let input_cidade = document.getElementById('pessoaCidade');
+    let input_estado = document.getElementById('pessoaEstado');
+    let input_cep = document.getElementById('pessoaCep');
 
     input_nome.value = pessoas[indice].nome;
     input_sobrenome.value = pessoas[indice].sobrenome;
@@ -144,7 +143,7 @@ function alterarPessoa(indice) {
     btnEditar.style.display = 'block';
 
     btnEditar.onclick = function () {
-        var pessoaAlterada = {
+        let pessoaAlterada = {
             nome: input_nome.value,
             sobrenome: input_sobrenome.value,
             telefone: input_telefone.value,
@@ -156,7 +155,7 @@ function alterarPessoa(indice) {
             cep: input_cep.value
         };
 
-        var validation = validarCampos(pessoaAlterada);
+        let validation = validarCampos(pessoaAlterada);
         if (!validation.status) {
             alert(validation.error);
             return;
@@ -174,8 +173,8 @@ function alterarPessoa(indice) {
 // Ordena a lista de pessoas pelo nome
 function ordenarLista() {
     pessoas.sort((a, b) => {
-        var x = a.nome.toLowerCase() + a.sobrenome.toLowerCase();
-        var y = b.nome.toLowerCase() + b.sobrenome.toLowerCase();
+        let x = a.nome.toLowerCase() + a.sobrenome.toLowerCase();
+        let y = b.nome.toLowerCase() + b.sobrenome.toLowerCase();
         return x.localeCompare(y);
     });
     mostrarLista();
